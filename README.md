@@ -27,3 +27,26 @@ import (
   "github.com/daegalus/go-dataunits"
 )
 ```
+
+## Example
+
+```go
+package main
+
+import (
+ "fmt"
+ "github.com/daegalus/go-dataunits"
+)
+
+func main() {
+ ds, err := dataunits.ParseSize[storage.StorageUnit]("1.5GiB")
+ if err != nil {
+  fmt.Println("Error parsing size:", err)
+  return
+ }
+
+ fmt.Println("Parsed size:", ds.Size) // 1.5
+ fmt.Println("Parsed size in bytes:", ds.Bytes) // 1610612736.0
+ fmt.Println("Parsed Unit in bytes:", ds.Unit) // 1073741824 (GB in bytes)
+}
+```
