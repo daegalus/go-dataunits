@@ -23,7 +23,7 @@ func IsMemoryUnit[T any]() bool {
 }
 
 func FromAbbreviation(abbr string) (MemoryUnit, error) {
-	abbr = strings.TrimSuffix(strings.ToLower(abbr), "B")
+	abbr = strings.TrimSuffix(strings.ToLower(abbr), "b")
 	switch abbr {
 	case "":
 		return BYTE, nil

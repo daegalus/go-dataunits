@@ -18,13 +18,13 @@ type DataSize[T units.Units] struct {
 }
 
 func ParseSize[T units.Units](input string) (DataSize[T], error) {
-	regex, err := regexp.Compile("([0-9]+[.]?[0-9]*)([kbmgtpezyKBMGTPEZYiI].{1,2})")
+	regex, err := regexp.Compile("([0-9]+[.]?[0-9]*) ?([kbmgtpezyKBMGTPEZYiI].{1,2})")
 	if err != nil {
 		return DataSize[T]{}, err
 	}
 
 	matches := regex.FindStringSubmatch(input)
-	slog.Info("matches", slog.Any("matches", matches))
+	slog.Debug("matches", slog.Any("matches", matches))
 	if len(matches) < 3 {
 		return DataSize[T]{}, fmt.Errorf("provided input is not a valid format")
 	}

@@ -8,13 +8,13 @@ import (
 )
 
 func main() {
-	test := "4.08Mi"
+	test := "4.08 Mi"
 	ds, _ := dataunits.ParseSize[storage.StorageUnit](test)
-	slog.Info("The object", slog.Any("datasize", ds))
+	slog.Debug("The object", slog.Any("datasize", ds))
 
 	test2 := "4.665432374687YiB"
 	ds2, _ := dataunits.ParseSize[storage.StorageUnit](test2)
-	slog.Info(
+	slog.Debug(
 		"the sizes",
 		slog.Float64("KB", ds2.Kilobyte()),
 		slog.Float64("MB", ds2.Megabyte()),
@@ -36,7 +36,7 @@ func main() {
 
 	test3 := "4.665432374687yb"
 	ds3, _ := dataunits.ParseSize[storage.StorageUnit](test3)
-	slog.Info(
+	slog.Debug(
 		"the sizes",
 		slog.Float64("KB", ds3.Kilobyte()),
 		slog.Float64("MB", ds3.Megabyte()),
